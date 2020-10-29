@@ -6,3 +6,5 @@ RUN cp /tmp/deck /usr/local/bin/
 RUN wget https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
 RUN apt-get update
 RUN apt-get -y install jq
+RUN apt-get -y install httpie
+RUN npm install -g kong-portal-cli
