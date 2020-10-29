@@ -8,3 +8,6 @@ RUN apt-get update
 RUN apt-get -y install jq
 RUN apt-get -y install httpie
 RUN npm install -g kong-portal-cli
+RUN mkdir /opt/work
+RUN cd /opt/work && git clone https://github.com/Kong/kong-portal-templates.git
+
