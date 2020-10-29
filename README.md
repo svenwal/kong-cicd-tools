@@ -12,7 +12,7 @@ When using the [Kong API Gateway](https://konghq.com/) (or it's Enterprise versi
 |---|---|---|
 |[decK](https://docs.konghq.com/deck/)|decK provides declarative configuration and drift detection for Kong.|1.2.1|
 |[inso](https://support.insomnia.rest/collection/105-inso-cli)|Inso is a CLI (command line interface) for Insomnia Core and Insomnia Designer built on Node.js and the Insomnia core libraries. It allows you to use Insomnia application functionality in your terminal, and CI/CD environments. Providing you with powerful automation capabilities.|2.2.25|
-|[portal cli](https://github.com/Kong/kong-portal-cli)|   |3.1.0|
+|[portal cli](https://github.com/Kong/kong-portal-cli)|The Kong Developer Portal CLI is used to manage your Developer Portals from the command line|3.1.0|
 |[httpie](https://httpie.io/)|HTTPie—aitch-tee-tee-pie—is a user-friendly command-line HTTP client for the API era. It comes with JSON support, syntax highlighting, persistent sessions, wget-like downloads, plugins, and more.|0.9.8|
 |[yq](https://github.com/mikefarah/yq)|a lightweight and portable command-line YAML processor. Like jq but for YAML|3.4.1|
 |[jq](https://stedolan.github.io/jq/)|jq is a lightweight and flexible command-line JSON processor.|1.5.1|
