@@ -16,4 +16,5 @@ When using the [Kong API Gateway](https://konghq.com/) (or it's Enterprise versi
 |[httpie](https://httpie.io/)|HTTPie—aitch-tee-tee-pie—is a user-friendly command-line HTTP client for the API era. It comes with JSON support, syntax highlighting, persistent sessions, wget-like downloads, plugins, and more.|0.9.8|
 |[yq](https://github.com/mikefarah/yq)|a lightweight and portable command-line YAML processor. Like jq but for YAML|3.4.1|
 |[jq](https://stedolan.github.io/jq/)|jq is a lightweight and flexible command-line JSON processor.|1.5.1|
+|[k6](https://k6.io/open-source)|A modern load testing tool built for developer happiness|0.28.0|
 |[Kong portal template](https://github.com/Kong/kong-portal-templates)|Developer Portal Template Files for Kong Enterprise Edition|cec65e5|
