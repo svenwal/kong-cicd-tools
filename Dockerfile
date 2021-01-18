@@ -1,9 +1,9 @@
 FROM node:latest
 RUN npm i -g insomnia-inso
-RUN curl -sL https://github.com/kong/deck/releases/download/v1.2.2/deck_1.2.2_linux_amd64.tar.gz -o deck.tar.gz
+RUN curl -sL https://github.com/kong/deck/releases/download/v1.3.0/deck_1.3.0_linux_amd64.tar.gz -o deck.tar.gz
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
-RUN wget https://github.com/mikefarah/yq/releases/download/3.4.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.4.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
 RUN apt-get update
 RUN apt-get -y install apt-transport-https ca-certificates
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
