@@ -1,5 +1,14 @@
 # Changelog
 
+## 2021-03-05
+
+* Updated base nodejs image to most current latest
+* Updated decK to 1.4.0
+* Updated inso cli to 2.2.30
+* Updated yq to 4.6.1
+* Updated k6 to 0.30.0
+* Added Spectral 5.8.1
+
 ## 2021-01-18
 
 * Updated base nodejs image to most current latest
