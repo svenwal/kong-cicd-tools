@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 (2021-05-03)
+
+* Updated base nodejs image to most current Node 15 / buster
+* Updated decK to 1.6.0
+* Updated inso cli to 2.2.33
+* Updated yq to 4.7.1
+* Updated k6 to 0.31.1
+* Updated Spectral 5.9.0
+* Updated portal theme template to 5206ac7 (Kong Enterprise 2.4)
+
 ## 1.4.0 (2021-04-01)
 
 * Updated base nodejs image to most current latest
