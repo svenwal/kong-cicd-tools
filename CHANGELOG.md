@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.0 (2021-06-01)
+
+* Updated base nodejs image to most current Node 15 / buster
+* 🆕 Added PostgreSQL clients (pg_dump and more) 11.12
+* Updated decK to 1.7.0
+* Updated inso cli to 2.2.35
+* Updated yq to 4.9.3
+* Updated k6 to 0.32.0
+* Updated Spectral 5.9.1
+
+
 ## 1.5.0 (2021-05-03)
 
 * Updated base nodejs image to most current Node 15 / buster
