@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.7.0 (2021-07-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* 🆕 Added kubeadm / kubectl 1.21.2
+* 🆕 Added helm 3.6.2
+* Updated inso cli to 2.3.0
+* Updated yq to 4.9.6
+* Updated k6 to 0.33.0
+
 ## 1.6.0 (2021-06-01)
 
 * Updated base nodejs image to most current Node 15 / buster
@@ -9,7 +18,6 @@
 * Updated yq to 4.9.3
 * Updated k6 to 0.32.0
 * Updated Spectral 5.9.1
-
 
 ## 1.5.0 (2021-05-03)
 
