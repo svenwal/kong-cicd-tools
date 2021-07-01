@@ -1,8 +1,8 @@
 # Kong CICD tools selection Docker image
 
-![Kong](kong-dark.png)
+![Kong](https://github.com/svenwal/kong-cicd-tools/raw/main/kong-dark.png)
 
-![CI](badge.svg)
+![CI](https://github.com/svenwal/kong-cicd-tools/raw/main/badge.svg)
 
 When using the [Kong API Gateway](https://konghq.com/) (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker [I have prepared this image and made available on Docker Hub](https://hub.docker.com/r/svenwal/kong-cicd-tools) which has the typical tools preinstalled.
 
