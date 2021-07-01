@@ -1,4 +1,9 @@
 FROM node:15-buster
+LABEL maintainer="sven@svenwal.de"
+LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
+LABEL org.label-schema.name="Kong CI/CD tools"
+LABEL org.label-schema.vendor = "SvenWal"
+LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
 RUN npm i -g insomnia-inso
 RUN curl -sL https://github.com/kong/deck/releases/download/v1.7.0/deck_1.7.0_linux_amd64.tar.gz -o deck.tar.gz
 RUN tar -xf deck.tar.gz -C /tmp
