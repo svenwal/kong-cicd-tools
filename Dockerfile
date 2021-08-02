@@ -8,9 +8,9 @@ RUN npm i -g insomnia-inso
 RUN curl -sL https://github.com/kong/deck/releases/download/v1.7.0/deck_1.7.0_linux_amd64.tar.gz -o deck.tar.gz
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
-RUN wget https://github.com/mikefarah/yq/releases/download/v4.9.6/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-RUN wget https://get.helm.sh/helm-v3.6.2-linux-amd64.tar.gz
-RUN tar -zxvf helm-v3.6.2-linux-amd64.tar.gz
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.11.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN wget https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz
+RUN tar -zxvf helm-v3.6.3-linux-amd64.tar.gz
 RUN mv linux-amd64/helm /usr/bin
 RUN apt-get update
 RUN apt-get -y install apt-transport-https ca-certificates

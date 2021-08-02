@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.8.0 (2021-08-02)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated portal cli to 3.2.0
+* Updated helm to 3.6.3
+* Updated yq to 4.11.2
+* Updated k6 to 0.33.0
+* Updated spectral 5.9.2
+* Updated kubeadm / kubectl to 1.21.3
+
 ## 1.7.0 (2021-07-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
