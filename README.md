@@ -18,7 +18,7 @@ This image is getting updated on a monthly cadence, each release has a Docker ta
 |[httpie](https://httpie.io/)|HTTPie—aitch-tee-tee-pie—is a user-friendly command-line HTTP client for the API era. It comes with JSON support, syntax highlighting, persistent sessions, wget-like downloads, plugins, and more.|0.9.8|
 |[yq](https://github.com/mikefarah/yq)|a lightweight and portable command-line YAML processor. Like jq but for YAML|4.12.1|
 |[jq](https://stedolan.github.io/jq/)|jq is a lightweight and flexible command-line JSON processor.|1.5.1|
-|[redic-tools](https://redis.io/topics/rediscli)|redis-cli is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.|5.0.3|
+|[redis-tools](https://redis.io/topics/rediscli)|redis-cli is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.|5.0.3|
 |[k6](https://k6.io/open-source)|A modern load testing tool built for developer happiness|0.33.0|
 |[Spectral](https://github.com/stoplightio/spectral)|Spectral, an Open Source JSON/YAML Linter|5.9.2|
 |[kubeadm / kubectl](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)|The toolset to configure your Kubernetes|1.22.1|
