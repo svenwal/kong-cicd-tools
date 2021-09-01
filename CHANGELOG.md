@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.9.0 (2021-09-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated inso cli to 2.3.2
+* Updated yq to 4.12.1
+* Updated kubeadm / kubectl to 1.22.1
+* Updated portal theme template to ff36b65
+
 ## 1.8.0 (2021-08-02)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
