@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.1 (2021-09-01)
+
+* 🆕 Added Redis tools 5.0.3
+
 ## 1.9.0 (2021-09-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)

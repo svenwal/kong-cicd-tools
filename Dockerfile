@@ -22,6 +22,7 @@ RUN apt-get update
 RUN apt-get -y install jq
 RUN apt-get -y install httpie
 RUN apt-get -y install k6
+RUN apt-get -y install redis-tools
 RUN apt-get -y install postgresql-client
 RUN apt-get install -y kubelet kubeadm kubectl
 RUN npm install -g kong-portal-cli
