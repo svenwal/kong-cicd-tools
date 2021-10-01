@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.10.0 (2021-10-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated decK to 1.8.2
+* Updated yq to 4.13.2
+* Updated k6 to 0.34.1
+* Updated kubeadm / kubectl to 1.22.2
+* Updated helm to 3.7.0
+* Updated Kong portal template to a9a387b (2.5.0.2)
+
+
 ## 1.9.1 (2021-09-01)
 
 * 🆕 Added Redis tools 5.0.3
