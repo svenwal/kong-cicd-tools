@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.11.0 (2021-11-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated inso to 2.4.0 - also the new binary release
+* Updated yq to 4.14.1
+* Updated spectral to 6.1.0
+* Updated kubeadm / kubectl to 1.22.3
+* Updated helm to 3.7.1
+* Updated postgresql clients to 11.13
+* Updated Kong portal template to dfde738
+
 ## 1.10.0 (2021-10-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
@@ -9,7 +20,6 @@
 * Updated kubeadm / kubectl to 1.22.2
 * Updated helm to 3.7.0
 * Updated Kong portal template to a9a387b (2.5.0.2)
-
 
 ## 1.9.1 (2021-09-01)
 

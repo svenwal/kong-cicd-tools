@@ -4,13 +4,15 @@ LABEL org.label-schema.description="When using the Kong API Gateway (or its Ente
 LABEL org.label-schema.name="Kong CI/CD tools"
 LABEL org.label-schema.vendor = "SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
-RUN npm i -g insomnia-inso
+RUN wget https://github.com/Kong/insomnia/releases/download/lib%402.4.0/inso-linux-2.4.0.tar.xz
+RUN tar -xf inso-linux-2.4.0.tar.xz
+RUN mv inso /bin/inso
 RUN curl -sL https://github.com/kong/deck/releases/download/v1.8.2/deck_1.8.2_linux_amd64.tar.gz -o deck.tar.gz
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
-RUN wget https://github.com/mikefarah/yq/releases/download/v4.13.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-RUN wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
-RUN tar -zxvf helm-v3.7.0-linux-amd64.tar.gz
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.14.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN wget https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
+RUN tar -zxvf helm-v3.7.1-linux-amd64.tar.gz
 RUN mv linux-amd64/helm /usr/bin
 RUN apt-get update
 RUN apt-get -y install apt-transport-https ca-certificates
