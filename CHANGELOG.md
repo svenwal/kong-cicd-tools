@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.12.0 (2021-12-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated yq to 4.15.1
+* Updated portal cli to 3.3.0
+* Updated redis tools to 5.0.14
+* Updated k6 to 0.35.0
+* Updated kubeadm / kubectl to 1.22.4
+* Updated postgresql clients to 11.14
+
 ## 1.11.0 (2021-11-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
