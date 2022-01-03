@@ -9,10 +9,8 @@ fi
 tag=$1
 
 echo "*** Publishing current state to Docker Hub with the tags $tag and latest"
-echo "--- 1. Building current version without using caches"
-docker build --no-cache -t svenwal/kong-cicd-tools:$tag .
-docker build -t svenwal/kong-cicd-tools:latest .
+echo "--- 1. Building current version $tag without using caches"
+docker buildx build --push --platform linux/amd64,linux/arm64 --no-cache -t svenwal/kong-cicd-tools:$tag .
+echo "--- 2. Building current version as latest"
+docker buildx build --push --platform linux/amd64,linux/arm64 -t svenwal/kong-cicd-tools:latest .
 
-echo "--- 2. Pushing to Docker hub"
-docker push svenwal/kong-cicd-tools:$tag
-docker push svenwal/kong-cicd-tools:latest

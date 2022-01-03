@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0 (2022-01-03)
+
+* 🆕 this image is now available for AMD64 and ARM64
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated yq to 1.10.0
+* Updated inso cli to 2.4.1 (also falling back to npm install for easier cross plattform script)
+* Updated portal cli to 3.3.1
+* Updated yq to 4.16.2
+* Updated kubeadm / kubectl to 1.23.1
+* Updated Kong portal template to ef6a6c2
+
 ## 1.12.0 (2021-12-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)

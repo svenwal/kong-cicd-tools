@@ -1,19 +1,20 @@
 FROM node:15-buster
+ARG TARGETPLATFORM
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
 LABEL org.label-schema.name="Kong CI/CD tools"
 LABEL org.label-schema.vendor = "SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
-RUN wget https://github.com/Kong/insomnia/releases/download/lib%402.4.0/inso-linux-2.4.0.tar.xz
-RUN tar -xf inso-linux-2.4.0.tar.xz
-RUN mv inso /bin/inso
-RUN curl -sL https://github.com/kong/deck/releases/download/v1.8.2/deck_1.8.2_linux_amd64.tar.gz -o deck.tar.gz
+RUN npm install --global insomnia-inso
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://github.com/kong/deck/releases/download/v1.10.0/deck_1.10.0_linux_amd64.tar.gz -o deck.tar.gz; else curl -sL https://github.com/kong/deck/releases/download/v1.10.0/deck_1.10.0_linux_arm64.tar.gz -o deck.tar.gz; fi
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
-RUN wget https://github.com/mikefarah/yq/releases/download/v4.15.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
-RUN wget https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
-RUN tar -zxvf helm-v3.7.1-linux-amd64.tar.gz
-RUN mv linux-amd64/helm /usr/bin
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_amd64 -o helm.tgz; else curl -sL wget https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_arm64 -o helm.tgz; fi
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://get.helm.sh/helm-v3.7.2-linux-amd64.tar.gz -o helm.tgz; else curl -sL https://get.helm.sh/helm-v3.7.2-linux-arm64.tar.gz -o helm.tgz; fi
+RUN tar -zxvf helm.tgz
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then mv linux-amd64/helm /usr/bin; else mv linux-arm64/helm /usr/bin; fi
+RUN rm helm.tgz
 RUN apt-get update
 RUN apt-get -y install apt-transport-https ca-certificates
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
@@ -23,7 +24,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] htt
 RUN apt-get update
 RUN apt-get -y install jq
 RUN apt-get -y install httpie
-RUN apt-get -y install k6
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then apt-get -y install k6; fi
 RUN apt-get -y install redis-tools
 RUN apt-get -y install postgresql-client
 RUN apt-get install -y kubelet kubeadm kubectl
