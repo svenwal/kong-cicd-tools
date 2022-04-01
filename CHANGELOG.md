@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.3.0 (2022-04-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated yq to 4.24.2
+* Updated helm to 3.8.1
+* Updated k6 to 0.37.0
+* Updated kubeadm / kubectl to 1.23.5
+* Update Kong developer template to 3042c03 (2.8.0.0)
+* Fix: yq was missing from the last ARM64 version of the image
+
 ## 2.2.0 (2022-03-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
