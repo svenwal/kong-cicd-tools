@@ -7,13 +7,13 @@ LABEL org.label-schema.vendor = "SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
 RUN npm install --global insomnia-inso
 # Deck
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://github.com/kong/deck/releases/download/v1.11.0/deck_1.11.0_linux_amd64.tar.gz -o deck.tar.gz; else curl -sL https://github.com/kong/deck/releases/download/v1.11.0/deck_1.11.0_linux_arm64.tar.gz -o deck.tar.gz; fi
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://github.com/kong/deck/releases/download/v1.12.0/deck_1.12.0_linux_amd64.tar.gz -o deck.tar.gz; else curl -sL https://github.com/kong/deck/releases/download/v1.12.0/deck_1.12.0_linux_arm64.tar.gz -o deck.tar.gz; fi
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
 ## yq
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/mikefarah/yq/releases/download/v4.24.2/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq ; else wget https://github.com/mikefarah/yq/releases/download/v4.24.2/yq_linux_arm64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/mikefarah/yq/releases/download/v4.25.1/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq ; else wget https://github.com/mikefarah/yq/releases/download/v4.25.1/yq_linux_arm64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
 # Helm
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://get.helm.sh/helm-v3.8.1-linux-amd64.tar.gz -o helm.tgz; else curl -sL https://get.helm.sh/helm-v3.8.1-linux-arm64.tar.gz -o helm.tgz; fi
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tgz; else curl -sL https://get.helm.sh/helm-v3.8.2-linux-arm64.tar.gz -o helm.tgz; fi
 RUN tar -zxvf helm.tgz
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then mv linux-amd64/helm /usr/bin; else mv linux-arm64/helm /usr/bin; fi
 RUN rm helm.tgz

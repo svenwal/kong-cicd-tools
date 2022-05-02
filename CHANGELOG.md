@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.0 (2022-05-02)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated deck to 1.12.0
+* Updated yq to 4.25.1
+* Updated helm to 3.8.2
+* Updated kubeadm / kubectl to 1.23.6
+* Updated Kong portal template to 2662c8d
+
 ## 2.3.0 (2022-04-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
