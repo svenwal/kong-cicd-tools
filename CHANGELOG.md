@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.0.0 (2022-07-01)
+
+The image now has an entrypoint which will keep it running to make it for example easy usable on a Kubernetes deployment
+
+* 🆕 Kong Gateway added
+* 🆕 Kong Mesh added
+* 🆕 Kuma added
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated deck to 1.12.2
+* Updated yq to 4.25.3
+* Updated helm to 3.9.0
+* Updated k6 to 0.38.3
+* Updated inso cli to 3.3.0
+* Updated kubeadm / kubectl to 1.24.2
+* Updated Kong portal template to 2662c8d (2.8.1.1)
+* Updated postgresql clients to 11.16
+* The Dockerfile is now more readable as all version numbers are now defined at the top
+
 ## 2.4.0 (2022-05-02)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
