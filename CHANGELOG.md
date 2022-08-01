@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.1.0 (2022-08-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated deck to 1.13.0
+* Updated yq to 4.26.1
+* Updated helm to 3.9.2
+* Updated k6 to 0.39.0
+* Updated Kuma to 1.7.1
+* Updated Kong Mesh to 1.8.1
+* Updated portal cli to 3.4.0
+* Updated kubeadm / kubectl to 1.24.3
+* Updated Kong portal template to 93fbafd
+* instead of entrypoint we are using cmd now to easily do a `docker run -ti svenwal/kong-cicd-tool /bin/bash`
+
 ## 3.0.0 (2022-07-01)
 
 The image now has an entrypoint which will keep it running to make it for example easy usable on a Kubernetes deployment
