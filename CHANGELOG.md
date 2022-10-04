@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.3.0 (2022-10-04)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated Kong Gateway to 3.0.0
+* Updated deck to 1.15.1
+* Updated inso cli to 3.6.0
+* Updated yq to 4.27.5
+* Updated helm to 3.10.0
+* Updated k6 to 0.40.0
+* Updated spectral to 6.5.0
+* Updated kubeadm / kubectl to 1.25.2
+* Updated Kong portal template to cbc4ca2 (3.0.0.0)
+
 ## 3.2.0 (2022-09-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
