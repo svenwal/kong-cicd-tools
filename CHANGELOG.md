@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.4.0 (2022-11-04)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated yq to 4.29.2
+* Updated helm to 3.10.1
+* Updated k6 to 0.41.0
+* Updated Kuma to 1.8.1
+* Updated Kong Mesh to 1.9.1
+* Updated kubeadm / kubectl to 1.25.3
+* Updated Kong portal template to a87e14b
+
 ## 3.3.0 (2022-10-04)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
