@@ -32,5 +32,5 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:foo
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}
           platforms: linux/amd64,linux/arm64
