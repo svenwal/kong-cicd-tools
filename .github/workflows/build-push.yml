@@ -1,9 +1,8 @@
-name: Docker Hub
+name: Tagged Docker Hub CI
 
 on:
   push:
-    tags:
-      - '*'
+    tags: [ "v*" ]
 
 jobs:
   build:
@@ -17,6 +16,18 @@ jobs:
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+          flavor: |
+            latest=auto
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
@@ -26,11 +37,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Tagged build and push
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:foo
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}
+          tags: ${{ steps.meta.outputs.tags }}
           platforms: linux/amd64,linux/arm64
