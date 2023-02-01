@@ -32,9 +32,9 @@ RUN chmod +x /usr/bin/k6 && rm k6.tgz
 # Kong gateway
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo kong.deb "https://download.konghq.com/gateway-3.x-debian-buster/pool/all/k/kong/kong_${KONG_VERSION}_amd64.deb" && dpkg -i kong.deb && rm kong.deb; fi
 # Kuma / Kong Mesh
-RUN VERSION=${KUMA_VERSION} curl -L https://kuma.io/installer.sh | bash -
+RUN curl -L https://kuma.io/installer.sh | VERSION=${KUMA_VERSION} bash -
 RUN ln -s kuma-${KUMA_VERSION} kuma-latest
-RUN VERSION=${KONG_MESH_VERSION} curl -L https://docs.konghq.com/mesh/installer.sh | bash -
+RUN curl -L https://docs.konghq.com/mesh/installer.sh | VERSION=${KONG_MESH_VERSION} bash -
 RUN ln -s kong-mesh-${KONG_MESH_VERSION} kong-mesh-latest
 
 # anything else

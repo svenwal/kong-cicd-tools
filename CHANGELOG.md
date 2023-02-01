@@ -1,9 +1,13 @@
 # Changelog
 
+## 3.6.1 (2023-02-01)
+
+* Updated Kuma to 2.1.0 (fix for 3.6.0 release downloading old version)
+
 ## 3.6.0 (2023-02-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
-* Updated Kuma to 2.1.0
+* Updated Kuma to 2.0.2
 * Updated Kong Mesh to 2.1.0
 * Updated deck to 1.17.2
 * Updated portal cli to 3.6.0
