@@ -1,4 +1,4 @@
-FROM node:15-buster
+FROM ubuntu:jammy
 
 ARG TARGETPLATFORM
 ARG KUMA_VERSION=2.1.1
