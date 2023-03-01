@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.7.0 (2023-02-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated Kong to 3.2.1
+* Updated Kuma to 2.1.1
+* Updated Kong Mesh to 2.1.0
+* Updated deck to 1.19.0
+* Updated yq to 4.31.1
+* Updated helm to 3.11.1
+* Updated k6 to 0.43.1
+* Updated kubeadm / kubectl to 1.26.2
+* Updated postgresql clients to 11.18
+* Updated Kong portal template to 2a813d1
+
 ## 3.6.1 (2023-02-01)
 
 * Updated Kuma to 2.1.0 (fix for 3.6.0 release downloading old version)
