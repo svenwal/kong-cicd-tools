@@ -15,7 +15,7 @@
 * Updated kubeadm / kubectl to 1.26.3
 * Updated Kong portal template to 12b894f
 
-## 3.7.0 (2023-02-01)
+## 3.7.0 (2023-03-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
 * Updated Kong to 3.2.1
