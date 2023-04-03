@@ -14,22 +14,26 @@ Starting with 2.0.0 this image is available for both AMD64 and ARM64.
 
 |Name|Description|Installed version|
 |---|---|---|
-|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about (AMD64 only so far)|3.2.1|
+|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about (AMD64 only so far)|3.2.2|
 |[Kong Mesh](https://konghq.com/)|The Kong Mesh modern multi-zone service mesh (Enterprise version) - installed in /kong-mesh-latest/ |2.1.1|
 |[Kuma](https://kuma.io/)|The Kuma modern multi-zone service mesh - installed in /kuma-latest/|2.1.1|
-|[decK](https://docs.konghq.com/deck/)|decK provides declarative configuration and drift detection for Kong.|1.19.0|
+|[decK](https://docs.konghq.com/deck/)|decK provides declarative configuration and drift detection for Kong.|1.19.1|
 |[inso](https://support.insomnia.rest/collection/105-inso-cli)|Inso is a CLI (command line interface) for Insomnia Core and Insomnia Designer built on Node.js and the Insomnia core libraries. It allows you to use Insomnia application functionality in your terminal, and CI/CD environments. Providing you with powerful automation capabilities.|3.6.0|
-|[portal cli](https://github.com/Kong/kong-portal-cli)|The Kong Developer Portal CLI is used to manage your Developer Portals from the command line|3.6.0|
+|[portal cli](https://github.com/Kong/kong-portal-cli)|The Kong Developer Portal CLI is used to manage your Developer Portals from the command line|3.6.1|
 |[httpie](https://httpie.io/)|HTTPie—aitch-tee-tee-pie—is a user-friendly command-line HTTP client for the API era. It comes with JSON support, syntax highlighting, persistent sessions, wget-like downloads, plugins, and more.|0.9.8|
-|[yq](https://github.com/mikefarah/yq)|a lightweight and portable command-line YAML processor. Like jq but for YAML|4.31.1|
+|[yq](https://github.com/mikefarah/yq)|a lightweight and portable command-line YAML processor. Like jq but for YAML|4.33.2|
 |[jq](https://stedolan.github.io/jq/)|jq is a lightweight and flexible command-line JSON processor.|1.5.1|
+|[openapi-format](https://github.com/thim81/openapi-format)|Format an OpenAPI document by ordering, formatting and filtering fields.|1.13.1|
+|[AWS cli tools](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)|An open source tool that enables you to interact with AWS services using commands in your command-line shell.|2.11.8|
+|[GCloud cli tools](https://cloud.google.com/sdk/docs)|The Google Cloud CLI is a set of tools that you can use to manage resources and applications hosted on Google Cloud.|424.0.0|
+|[Azure cli tools](https://learn.microsoft.com/en-us/cli/azure/)|The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources|2.46.0|
 |[redis-tools](https://redis.io/topics/rediscli)|redis-cli is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.|5.0.14|
 |[k6](https://k6.io/open-source)|A modern load testing tool built for developer happiness|0.43.1|
 |[Spectral](https://github.com/stoplightio/spectral)|Spectral, an Open Source JSON/YAML Linter|6.5.0|
-|[kubeadm / kubectl](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)|The toolset to configure your Kubernetes|1.26.2|
-|[Helm](https://helm.sh/)|The package manager for Kubernetes|3.11.0|
+|[kubeadm / kubectl](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)|The toolset to configure your Kubernetes|1.26.3|
+|[Helm](https://helm.sh/)|The package manager for Kubernetes|3.11.1|
 |[PostgreSQL clients](https://www.postgresql.org/docs/11/reference-client.html)|PostgreSQL client applications and utilities (including pg_dump)|11.19|
-|[Kong portal template](https://github.com/Kong/kong-portal-templates)|Developer Portal Template Files for Kong Enterprise Edition|f28fc2c|
+|[Kong portal template](https://github.com/Kong/kong-portal-templates)|Developer Portal Template Files for Kong Enterprise Edition|12b894f|
 
 ## Any wishes?
 

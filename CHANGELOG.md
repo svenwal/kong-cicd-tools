@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.8.0 (2023-04-03)
+
+* 🆕 Added openapi-format
+* 🆕 Added AWS cli tools
+* 🆕 Added Google Cloud cli tools
+* 🆕 Added Azure cli tools
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated Kong to 3.2.2
+* Updated deck to 1.19.1
+* Updated portal cli to 3.6.1
+* Updated yq to 4.33.2
+* Updated helm to 3.11.2
+* Updated kubeadm / kubectl to 1.26.3
+* Updated Kong portal template to 12b894f
+
 ## 3.7.0 (2023-02-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)

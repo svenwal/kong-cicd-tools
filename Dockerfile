@@ -3,11 +3,11 @@ FROM node:15-buster
 ARG TARGETPLATFORM
 ARG KUMA_VERSION=2.1.1
 ARG KONG_MESH_VERSION=2.1.1
-ARG DECK_VERSION=1.19.0
-ARG YQ_VERSION=4.31.1
-ARG HELM_VERSION=3.11.1
+ARG DECK_VERSION=1.19.1
+ARG YQ_VERSION=4.33.2
+ARG HELM_VERSION=3.11.2
 ARG K6_VERSION=0.43.1
-ARG KONG_VERSION=3.2.1
+ARG KONG_VERSION=3.2.2
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
@@ -43,7 +43,29 @@ RUN apt-get -y install apt-transport-https ca-certificates
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
 RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
+
+# cloud tools
+# AWS
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o "awscliv2.zip"; else curl -sL https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -o "awscliv2.zip"; fi
+RUN unzip awscliv2.zip
+RUN ./aws/install
+RUN rm awscliv2.zip
+RUN rm -rf aws
+
+# Google Cloud
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-x86_64.tar.gz -o "gcloud.tar.gz"; else curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-arm.tar.gz -o "gcloud.tar.gz"; fi
+RUN tar -xf gcloud.tar.gz
+RUN CLOUDSDK_CORE_DISABLE_PROMPTS=1 ./google-cloud-sdk/install.sh
+RUN echo ". /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
+RUN rm gcloud.tar.gz
+
+RUN mkdir -p /etc/apt/keyrings
+RUN curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+RUN chmod go+r /etc/apt/keyrings/microsoft.gpg
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ buster main" | tee /etc/apt/sources.list.d/azure-cli.list; else echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ buster main" | tee /etc/apt/sources.list.d/azure-cli.list; fi
 RUN apt-get update
+RUN apt-get -y install azure-cli
+
 RUN apt-get -y install jq
 RUN apt-get -y install httpie
 RUN apt-get -y install redis-tools
@@ -51,6 +73,7 @@ RUN apt-get -y install postgresql-client
 RUN apt-get install -y kubelet kubeadm kubectl
 RUN npm install -g kong-portal-cli
 RUN npm install -g @stoplight/spectral
+RUN npm install -g openapi-format
 RUN mkdir /opt/work
 RUN cd /opt/work && git clone https://github.com/Kong/kong-portal-templates.git
 
