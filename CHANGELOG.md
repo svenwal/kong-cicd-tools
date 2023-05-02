@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.9.0 (2023-05-02)
+
+* Updated Kuma to 2.2.0
+* Updated Kong Mesh to 2.2.0
+* Updated yq to 4.33.3
+* Updated helm to 3.11.3
+* Updated k6 to 0.44.0
+* Updated openapi-format to 1.14.0
+* Updated AWS cli tools to 2.11.16
+* Updated Azure cli tools to 2.48.1
+* Updated kubeadm / kubectl to 1.27.1
+
+
 ## 3.8.0 (2023-04-03)
 
 * 🆕 Added openapi-format
