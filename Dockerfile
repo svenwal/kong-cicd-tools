@@ -1,13 +1,14 @@
 FROM node:15-buster
 
 ARG TARGETPLATFORM
-ARG KONG_VERSION=3.2.2
-ARG KUMA_VERSION=2.2.0
-ARG KONG_MESH_VERSION=2.2.0
-ARG DECK_VERSION=1.19.1
-ARG YQ_VERSION=4.33.3
-ARG HELM_VERSION=3.11.3
-ARG K6_VERSION=0.44.0
+ARG KONG_VERSION=3.3.0
+ARG KUMA_VERSION=2.2.1
+ARG KONG_MESH_VERSION=2.2.1
+ARG DECK_VERSION=1.21.0
+ARG KCED_VERSION=0.1.13
+ARG YQ_VERSION=4.34.1
+ARG HELM_VERSION=3.12.0
+ARG K6_VERSION=0.44.1
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
@@ -19,6 +20,12 @@ RUN npm install --global insomnia-inso
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://github.com/kong/deck/releases/download/v${DECK_VERSION}/deck_${DECK_VERSION}_linux_amd64.tar.gz -o deck.tar.gz; else curl -sL https://github.com/kong/deck/releases/download/v${DECK_VERSION}/deck_${DECK_VERSION}_linux_arm64.tar.gz -o deck.tar.gz; fi
 RUN tar -xf deck.tar.gz -C /tmp
 RUN cp /tmp/deck /usr/local/bin/
+RUN rm deck.tar.gz
+# kced
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://github.com/Kong/go-apiops/releases/download/v${KCED_VERSION}/go-apiops_${KCED_VERSION}_linux_amd64.tar.gz -o kced.tar.gz; else curl -sL https://github.com/Kong/go-apiops/releases/download/v${KCED_VERSION}/go-apiops_${KCED_VERSION}_linux_arm64.tar.gz -o kced.tar.gz; fi
+RUN tar -xf kced.tar.gz -C /tmp
+RUN cp /tmp/kced /usr/local/bin/
+RUN rm kced.tar.gz
 ## yq
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq ; else wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_arm64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
 # Helm
@@ -41,7 +48,8 @@ RUN ln -s kong-mesh-${KONG_MESH_VERSION} kong-mesh-latest
 RUN apt-get update
 RUN apt-get -y install apt-transport-https ca-certificates
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg
+#RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 RUN echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
 
 # cloud tools
@@ -52,14 +60,20 @@ RUN ./aws/install
 RUN rm awscliv2.zip
 RUN rm -rf aws
 
-# Google Cloud
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-x86_64.tar.gz -o "gcloud.tar.gz"; else curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-arm.tar.gz -o "gcloud.tar.gz"; fi
-RUN tar -xf gcloud.tar.gz
-RUN CLOUDSDK_CORE_DISABLE_PROMPTS=1 ./google-cloud-sdk/install.sh
-RUN echo ". /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
-RUN rm gcloud.tar.gz
-
+# Google 
+#RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+#RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+#RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN mkdir -p /etc/apt/keyrings
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-cli -y
+      
+#RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-x86_64.tar.gz -o "gcloud.tar.gz"; else curl -sL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-424.0.0-linux-arm.tar.gz -o "gcloud.tar.gz"; fi
+#RUN tar -xf gcloud.tar.gz
+#RUN CLOUDSDK_CORE_DISABLE_PROMPTS=1 ./google-cloud-sdk/install.sh
+#RUN echo ". /google-cloud-sdk/path.bash.inc" >> ~/.bashrc
+#RUN rm gcloud.tar.gz
+
+
 RUN curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null
 RUN chmod go+r /etc/apt/keyrings/microsoft.gpg
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ buster main" | tee /etc/apt/sources.list.d/azure-cli.list; else echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ buster main" | tee /etc/apt/sources.list.d/azure-cli.list; fi

@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.10.0 (2023-06-01)
+
+* 🆕 Added go-apiops ("kced") 0.1.13
+* Updated Kong to 3.3.0
+* Updated Kuma to 2.2.1
+* Updated Kong Mesh to 2.2.1
+* Updated deck to 1.21.0
+* Updated yq to 4.34.1
+* Updated helm to 3.12.0
+* Updated k6 to 0.44.1
+* Updated AWS cli tools to 2.11.24
+* Updated GCloud cli tools to 433.0.0
+* Updated Azure cli tools to 2.49.0
+* Updated kubeadm / kubectl to 1.27.2
+* Updated postgresql clients to 11.20
+* Updated Kong portal template to 6adb825
+
 ## 3.9.0 (2023-05-02)
 
 * Updated Kuma to 2.2.0
@@ -11,7 +28,6 @@
 * Updated AWS cli tools to 2.11.16
 * Updated Azure cli tools to 2.48.1
 * Updated kubeadm / kubectl to 1.27.1
-
 
 ## 3.8.0 (2023-04-03)
 
