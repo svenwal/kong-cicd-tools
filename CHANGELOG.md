@@ -6,7 +6,7 @@
 * Updated Kuma to 2.3.0
 * Updated Kong Mesh to 2.3.0
 * Updated deck to 1.23.0
-* Updated go-apiops ("kced") 0.1.13
+* Updated go-apiops ("kced") 0.1.16
 * Updated helm to 3.12.1
 * Updated k6 to 0.45.0
 * Updated AWS cli tools to 2.12.6
