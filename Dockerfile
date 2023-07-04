@@ -2,13 +2,13 @@ FROM node:15-buster
 
 ARG TARGETPLATFORM
 ARG KONG_VERSION=3.3.0
-ARG KUMA_VERSION=2.2.1
-ARG KONG_MESH_VERSION=2.2.1
-ARG DECK_VERSION=1.21.0
-ARG KCED_VERSION=0.1.13
+ARG KUMA_VERSION=2.3.0
+ARG KONG_MESH_VERSION=2.3.0
+ARG DECK_VERSION=1.23.0
+ARG KCED_VERSION=0.1.16
 ARG YQ_VERSION=4.34.1
-ARG HELM_VERSION=3.12.0
-ARG K6_VERSION=0.44.1
+ARG HELM_VERSION=3.12.1
+ARG K6_VERSION=0.45.0
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
