@@ -26,24 +26,81 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push no-cloud-clis
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_CLOUD_CLIS=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push no-cloud-clis-no-mesh
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_CLOUD_CLIS=false
+            INCLUDE_MESH=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push no-cloud-clis-no-mesh-no-gateway
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_CLOUD_CLIS=false
+            INCLUDE_MESH=false
+            INCLUDE_GATEWAY=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh-no-gateway
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push no-mesh-no-gateway
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_MESH=false
+            INCLUDE_GATEWAY=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh-no-gateway
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push no-mesh
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_MESH=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push no-gateway
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          build-args: |
+            INCLUDE_GATEWAY=false
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-gateway
+          platforms: linux/amd64,linux/arm64
+      -
+        name: Build and push all-in
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh-no-gateway
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh-no-gateway
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-gateway
             ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh-no-gateway
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh-no-gateway
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-gateway
             ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest
-
           platforms: linux/amd64,linux/arm64
