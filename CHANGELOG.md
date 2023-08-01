@@ -1,5 +1,25 @@
 # Changelog
 
+## 3.12.0 (2023-08-01)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* 🆕 Added bind-utils (dnsutils, dig, ...)
+* Updated Kong to 3.3.1
+* Updated Kuma to 2.3.1
+* Updated Kong Mesh to 2.3.1
+* Updated deck to 1.25.0 (includes new ApiOps from ex-kced)
+* Updated yq to 4.34.2
+* Updated helm to 3.12.2
+* Updated AWS cli tools to 2.13.5
+* Updated GCloud cli tools to 440.0.0
+* Updated Azure cli tools to 2.51.0
+* Updated kubeadm / kubectl to 1.27.4
+
+* Removed kced (see deck above)
+
+Drastically lowered the size of the image as 3.11.0 has been > 4.3GB
+There are now multiple different tags available to not include cloud cli tools, mesh and/or gateway
+
 ## 3.11.0 (2023-07-04)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
