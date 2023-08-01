@@ -31,6 +31,19 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-cloud-clis-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}-no-gateway
             ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:${{ github.ref_name }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-cloud-clis-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-mesh
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest-no-gateway
+            ${{ secrets.DOCKERHUB_USERNAME }}/kong-cicd-tools:latest
+
           platforms: linux/amd64,linux/arm64
