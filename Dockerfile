@@ -31,14 +31,14 @@ rm deck.tar.gz; fi
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq ; else wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_arm64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
 # Helm
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz -o helm.tgz && \
-tar -zxvf helm.tgz && \
+tar -zxf helm.tgz && \
 mv linux-amd64/helm /usr/bin && \
 rm helm.tgz; else curl -sL https://get.helm.sh/helm-v${HELM_VERSION}-linux-arm64.tar.gz -o helm.tgz && \
-tar -zxvf helm.tgz && \
+tar -zxf helm.tgz && \
 mv linux-arm64/helm /usr/bin && \
 rm helm.tgz; fi
 # k6
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz -O k6.tgz && tar -zxvf k6.tgz && mv k6-v${K6_VERSION}-linux-amd64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; else wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-arm64.tar.gz -O k6.tgz && tar -zxvf k6.tgz && mv k6-v${K6_VERSION}-linux-arm64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; fi
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz -O k6.tgz && tar -zxf k6.tgz && mv k6-v${K6_VERSION}-linux-amd64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; else wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-arm64.tar.gz -O k6.tgz && tar -zxf k6.tgz && mv k6-v${K6_VERSION}-linux-arm64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; fi
 # Kong gateway
 RUN if [ "$INCLUDE_GATEWAY" = "true" ]; then if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo kong.deb "https://download.konghq.com/gateway-3.x-debian-buster/pool/all/k/kong/kong_${KONG_VERSION}_amd64.deb" && dpkg -i kong.deb && rm kong.deb; fi; fi
 # Kuma / Kong Mesh
