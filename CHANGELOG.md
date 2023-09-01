@@ -1,5 +1,15 @@
 # Changelog
 
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated Kong to 3.4.0
+* Updated Kuma to 2.4.0
+* Updated Kuma to 2.4.0
+* Updated deck to 1.26.0
+* Updated yq to 4.35.1
+* Updated helm to 3.12.3
+* Updated k6 to 0.46.0
+* Updated all cloud tools to most current version
+
 ## 3.12.0 (2023-08-01)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
