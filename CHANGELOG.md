@@ -1,14 +1,32 @@
 # Changelog
 
+## 3.14.0 (2023-10-04)
+
+* Updated base nodejs image to most current Node 15 / buster (as always)
+* Updated Kong to 3.4.1
+* Updated Kuma to 2.4.2
+* Updated Kong Mesh to 2.4.2
+* Updated deck to 1.27.1
+* Updated yq to 4.35.2
+* Updated helm to 3.13.0
+* Updated portal CLI to 3.6.2
+* Updated openapi-format to 1.14.1
+* Updated AWS cli tools to 2.13.23
+* Updated GCloud cli tools to 449.0.0
+* Updated Azure cli tools to 2.53.0
+* Updated Kong portal template to 50b1951
+
+## 3.13.0 (2023-09-01)
 * Updated base nodejs image to most current Node 15 / buster (as always)
 * Updated Kong to 3.4.0
 * Updated Kuma to 2.4.0
-* Updated Kuma to 2.4.0
+* Updated Kong Mesh to 2.4.0
 * Updated deck to 1.26.0
 * Updated yq to 4.35.1
 * Updated helm to 3.12.3
 * Updated k6 to 0.46.0
 * Updated all cloud tools to most current version
+* Updated kubeadm / kubectl to 1.28.2
 
 ## 3.12.0 (2023-08-01)
 
