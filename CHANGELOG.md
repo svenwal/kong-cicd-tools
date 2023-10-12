@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.14.1 (2023-10-12)
+
+Hotfix release which covers [CVE-2023-44487](https://nvd.nist.gov/vuln/detail/CVE-2023-44487) in Kong Gateway, Kong Mesh and Kuma
+
+* Updated Kong to 3.4.2
+* Updated Kuma to 2.4.3
+* Updated Kong Mesh to 2.4.3
+
 ## 3.14.0 (2023-10-04)
 
 * Updated base nodejs image to most current Node 15 / buster (as always)
