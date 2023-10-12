@@ -14,9 +14,9 @@ Starting with 2.0.0 this image is available for both AMD64 and ARM64.
 
 |Name|Description|Installed version|
 |---|---|---|
-|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about (AMD64 only so far)|3.4.1|
-|[Kong Mesh](https://konghq.com/)|The Kong Mesh modern multi-zone service mesh (Enterprise version) - installed in /kong-mesh-latest/ |2.4.2|
-|[Kuma](https://kuma.io/)|The Kuma modern multi-zone service mesh - installed in /kuma-latest/|2.4.2|
+|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about (AMD64 only so far)|3.4.2|
+|[Kong Mesh](https://konghq.com/)|The Kong Mesh modern multi-zone service mesh (Enterprise version) - installed in /kong-mesh-latest/ |2.4.3|
+|[Kuma](https://kuma.io/)|The Kuma modern multi-zone service mesh - installed in /kuma-latest/|2.4.3|
 |[decK](https://docs.konghq.com/deck/)|decK provides declarative configuration and drift detection for Kong.|1.27.1|
 |[inso](https://support.insomnia.rest/collection/105-inso-cli)|Inso is a CLI (command line interface) for Insomnia Core and Insomnia Designer built on Node.js and the Insomnia core libraries. It allows you to use Insomnia application functionality in your terminal, and CI/CD environments. Providing you with powerful automation capabilities.|3.6.0|
 |[portal cli](https://github.com/Kong/kong-portal-cli)|The Kong Developer Portal CLI is used to manage your Developer Portals from the command line|3.6.2|
