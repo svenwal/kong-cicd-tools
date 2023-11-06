@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.0.0 (2023-11-61)
+
+* 🆕 Moved base nodejs image to current Node 21 / silkworm
+* Updated deck to 1.29.0
+* Updated inso cli to 8.3.0 (🆕 major update, new installation mechanism, AMD64 only from now on)
+* Updated helm to 3.13.1
+* Updated k6 to 0.47.0
+* Updated httpie to 3.2.1 (🆕 major update)
+* Updated jq to 1.6
+* Updated openapi-format to 1.15.1
+* Updated AWS cli tools to 2.13.32
+* Updated GCloud cli tools to 453.0.0
+* Updated Azure cli tools to 2.53.1
+* Updated redis tools to 7.0.11 (🆕 major update)
+* Updated postgresql clients to 15.3 (🆕 major update)
+* Updated Kong portal template to acf8404
+
 ## 3.14.1 (2023-10-12)
 
 Hotfix release which covers [CVE-2023-44487](https://nvd.nist.gov/vuln/detail/CVE-2023-44487) in Kong Gateway, Kong Mesh and Kuma
