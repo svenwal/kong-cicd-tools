@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0 (2023-11-61)
+## 4.0.0 (2023-11-06)
 
 * 🆕 Moved base nodejs image to current Node 21 / silkworm
 * Updated deck to 1.29.0
