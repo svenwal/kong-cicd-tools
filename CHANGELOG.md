@@ -3,6 +3,7 @@
 ## 4.0.0 (2023-11-06)
 
 * 🆕 Moved base nodejs image to current Node 21 / silkworm
+* 🆕 Kong Gateway is now available for ARM64 image too
 * Updated deck to 1.29.0
 * Updated inso cli to 8.3.0 (🆕 major update, new installation mechanism, AMD64 only from now on)
 * Updated helm to 3.13.1

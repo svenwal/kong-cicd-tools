@@ -20,7 +20,7 @@ LABEL org.label-schema.name="Kong CI/CD tools"
 LABEL org.label-schema.vendor = "SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
 
-RUN apt-get update && apt-get install curl wget gnupg unzip python3 libcurl4-openssl-dev libssl-dev git -y
+RUN apt-get update && apt-get install curl wget gnupg unzip python3 libcurl4-openssl-dev libssl-dev git libpcre3 zlib1g-dev libyaml-0-2 -y
 # Deck
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; \
 then curl -sL https://github.com/kong/deck/releases/download/v${DECK_VERSION}/deck_${DECK_VERSION}_linux_amd64.tar.gz -o deck.tar.gz && \
@@ -43,7 +43,15 @@ rm helm.tgz; fi
 # k6
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-amd64.tar.gz -O k6.tgz && tar -zxf k6.tgz && mv k6-v${K6_VERSION}-linux-amd64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; else wget https://github.com/grafana/k6/releases/download/v${K6_VERSION}/k6-v${K6_VERSION}-linux-arm64.tar.gz -O k6.tgz && tar -zxf k6.tgz && mv k6-v${K6_VERSION}-linux-arm64/k6 /usr/bin && chmod +x /usr/bin/k6 && rm k6.tgz ; fi
 # Kong gateway
-RUN if [ "$INCLUDE_GATEWAY" = "true" ]; then if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo kong.deb "https://download.konghq.com/gateway-3.x-debian-bullseye/pool/all/k/kong/kong_${KONG_VERSION}_amd64.deb" && dpkg -i kong.deb && rm kong.deb; fi; fi
+RUN if [ "$INCLUDE_GATEWAY" = "true" ]; \
+    then \
+        if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+            curl -Lo kong.deb "https://download.konghq.com/gateway-3.x-ubuntu-jammy/pool/all/k/kong/kong_${KONG_VERSION}_amd64.deb"; \
+        else \
+            curl -Lo kong.deb "https://download.konghq.com/gateway-3.x-ubuntu-jammy/pool/all/k/kong/kong_${KONG_VERSION}_arm64.deb"; \
+        fi; \
+        dpkg -i kong.deb && rm kong.deb; \
+    fi
 # Kuma / Kong Mesh
 RUN if [ "$INCLUDE_MESH" = "true" ]; then curl -L https://kuma.io/installer.sh | VERSION=${KUMA_VERSION} bash - && ln -s kuma-${KUMA_VERSION} kuma-latest && curl -L https://docs.konghq.com/mesh/installer.sh | VERSION=${KONG_MESH_VERSION} bash - && ln -s kong-mesh-${KONG_MESH_VERSION} kong-mesh-latest; fi
 

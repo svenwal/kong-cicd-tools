@@ -14,7 +14,7 @@ Starting with 2.0.0 this image is available for both AMD64 and ARM64.
 
 |Name|Description|Installed version|
 |---|---|---|
-|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about (AMD64 only so far)|3.4.2|
+|[Kong Gateway](https://konghq.com/)|The Kong gateway this image is all about|3.4.2|
 |[Kong Mesh](https://konghq.com/)|The Kong Mesh modern multi-zone service mesh (Enterprise version) - installed in /kong-mesh-latest/ |2.4.3|
 |[Kuma](https://kuma.io/)|The Kuma modern multi-zone service mesh - installed in /kuma-latest/|2.4.3|
 |[decK](https://docs.konghq.com/deck/)|decK provides declarative configuration and drift detection for Kong.|1.28.0|
