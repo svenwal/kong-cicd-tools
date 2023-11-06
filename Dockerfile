@@ -20,7 +20,7 @@ LABEL org.label-schema.name="Kong CI/CD tools"
 LABEL org.label-schema.vendor = "SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
 
-RUN apt-get update && apt-get install curl wget gnupg unzip python3 libcurl4-openssl-dev libssl-dev git libpcre3 zlib1g-dev libyaml-0-2 -y
+RUN apt-get update && apt-get install curl wget gnupg unzip python3 libcurl4-openssl-dev libssl-dev git libpcre3 zlib1g-dev libyaml-0-2 xz-utils -y
 # Deck
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; \
 then curl -sL https://github.com/kong/deck/releases/download/v${DECK_VERSION}/deck_${DECK_VERSION}_linux_amd64.tar.gz -o deck.tar.gz && \
@@ -77,10 +77,11 @@ RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then mkdir -p /etc/apt/keyrings && ec
 RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null && chmod go+r /etc/apt/keyrings/microsoft.gpg && if [ "$TARGETPLATFORM" = "linux/amd64" ]; then echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; else echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; fi; apt-get update && apt-get install azure-cli; fi
 
 # inso cli
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo inso.tgz "https://github.com/Kong/insomnia/releases/download/lib@${INSO_VERSION}/inso-linux-${INSO_VERSION}.tar.xz" && \
-tar -zxf inso.tgz && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo inso.tar.xz "https://github.com/Kong/insomnia/releases/download/lib@${INSO_VERSION}/inso-linux-${INSO_VERSION}.tar.xz" && \
+unxz inso.tar.xz && \
+tar -xf inso.tar && \
 mv inso /usr/bin && \
-rm inso.tgz; fi;
+rm inso.tar; fi;
 
 RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client kubelet kubeadm kubectl dnsutils
 
