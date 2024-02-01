@@ -1,6 +1,24 @@
 # Changelog
 
+## 4.2.0 (2024-02-01)
+
+* Updated base nodejs image to most current version
+* Updated Kuma to 2.6.0
+* Updated Kong Mesh to 2.6.0
+* Updated deck to 1.32.1
+* Updated inso cli to 8.6.0
+* Updated helm to 3.14.0
+* Updated k6 to 0.49.0
+* Updated openapi-format to 1.16.0
+* Updated AWS cli tools to 2.15.16
+* Updated GCloud cli tools to 462.0.1
+* Updated Azure cli tools to 2.56.0
+* Updated redis tools to 7.0.15
+* Updated kubeadm / kubectl to 1.27.9
+* Updated Kong portal template to 8238390
+
 ## 4.1.0 (2024-01-02)
+
 * Updated base nodejs image to most current version
 * Updated Kong Gateway to 3.5.0
 * Updated Kuma to 2.5.1
@@ -14,7 +32,6 @@
 * Updated AWS cli tools to 2.15.6
 * Updated GCloud cli tools to 458.0.1
 * Updated Azure cli tools to 2.55.0
-* Updated k6 to 0.48.0
 * Updated postgresql clients to 15.5
 * Updated Kong portal template to 59eaa4a
 
