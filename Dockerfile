@@ -5,13 +5,13 @@ ARG INCLUDE_MESH=true
 ARG INCLUDE_GATEWAY=true
 
 ARG TARGETPLATFORM
-ARG KONG_VERSION=3.5.0
-ARG KUMA_VERSION=2.6.0
-ARG KONG_MESH_VERSION=2.6.0
-ARG DECK_VERSION=1.32.1
-ARG INSO_VERSION=8.6.0
-ARG YQ_VERSION=4.40.5
-ARG HELM_VERSION=3.14.0
+ARG KONG_VERSION=3.6.1
+ARG KUMA_VERSION=2.6.1
+ARG KONG_MESH_VERSION=2.6.1
+ARG DECK_VERSION=1.35.0
+ARG INSO_VERSION=8.6.1
+ARG YQ_VERSION=4.42.1
+ARG HELM_VERSION=3.14.2
 ARG K6_VERSION=0.49.0
 
 LABEL maintainer="sven@svenwal.de"
@@ -57,8 +57,7 @@ RUN if [ "$INCLUDE_MESH" = "true" ]; then curl -L https://kuma.io/installer.sh |
 
 # anything else
 RUN apt-get update && apt-get -y install apt-transport-https ca-certificates && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/kubernetes-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
-
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; else curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"; fi && chmod +x kubectl && mv kubectl /usr/local/bin
 # cloud tools
 # AWS
 RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o "awscliv2.zip" && \
@@ -71,8 +70,8 @@ unzip awscliv2.zip && \
 rm awscliv2.zip && \
 rm -rf aws; fi;fi
 
-# Google 
-RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then mkdir -p /etc/apt/keyrings && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && apt-get update -y && apt-get install google-cloud-cli -y; fi    
+# Google
+RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && apt-get update && apt-get install google-cloud-cli -y; fi
 
 RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null && chmod go+r /etc/apt/keyrings/microsoft.gpg && if [ "$TARGETPLATFORM" = "linux/amd64" ]; then echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; else echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; fi; apt-get update && apt-get install azure-cli; fi
 
@@ -83,7 +82,7 @@ tar -xf inso.tar && \
 mv inso /usr/bin && \
 rm inso.tar; fi;
 
-RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client kubelet kubeadm kubectl dnsutils
+RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client kubectl dnsutils
 
 RUN npm install -g kong-portal-cli @stoplight/spectral openapi-format
 RUN mkdir /opt/work
