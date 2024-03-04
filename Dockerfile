@@ -82,7 +82,7 @@ tar -xf inso.tar && \
 mv inso /usr/bin && \
 rm inso.tar; fi;
 
-RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client kubectl dnsutils
+RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client dnsutils
 
 RUN npm install -g kong-portal-cli @stoplight/spectral openapi-format
 RUN mkdir /opt/work
