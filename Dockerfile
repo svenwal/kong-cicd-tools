@@ -6,13 +6,13 @@ ARG INCLUDE_GATEWAY=true
 
 ARG TARGETPLATFORM
 ARG KONG_VERSION=3.6.1
-ARG KUMA_VERSION=2.6.1
-ARG KONG_MESH_VERSION=2.6.1
-ARG DECK_VERSION=1.35.0
-ARG INSO_VERSION=8.6.1
-ARG YQ_VERSION=4.42.1
-ARG HELM_VERSION=3.14.2
-ARG K6_VERSION=0.49.0
+ARG KUMA_VERSION=2.7.2
+ARG KONG_MESH_VERSION=2.7.2
+ARG DECK_VERSION=1.37.0
+ARG INSO_VERSION=9.1.0
+ARG YQ_VERSION=4.43.1
+ARG HELM_VERSION=3.14.4
+ARG K6_VERSION=0.50.0
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
