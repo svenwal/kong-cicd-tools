@@ -77,7 +77,7 @@ RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then curl https://packages.cloud.goog
 RUN if [ "$INCLUDE_CLOUD_CLIS" = "true" ]; then curl -sLS https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/keyrings/microsoft.gpg > /dev/null && chmod go+r /etc/apt/keyrings/microsoft.gpg && if [ "$TARGETPLATFORM" = "linux/amd64" ]; then echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; else echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ bookworm main" | tee /etc/apt/sources.list.d/azure-cli.list; fi; apt-get update && apt-get install azure-cli; fi
 
 # inso cli
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo inso.tar.xz "https://github.com/Kong/insomnia/releases/download/lib@${INSO_VERSION}/inso-linux-${INSO_VERSION}.tar.xz" && \
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -Lo inso.tar.xz "https://github.com/Kong/insomnia/releases/download/core%40${INSO_VERSION}/inso-linux-${INSO_VERSION}.tar.xz" && \
 unxz inso.tar.xz && \
 tar -xf inso.tar && \
 mv inso /usr/bin && \
