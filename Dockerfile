@@ -5,20 +5,20 @@ ARG INCLUDE_MESH=true
 ARG INCLUDE_GATEWAY=true
 
 ARG TARGETPLATFORM
-ARG KONG_VERSION=3.7.1
-ARG KONG_FOLDER=37
-ARG KUMA_VERSION=2.8.0
-ARG KONG_MESH_VERSION=2.8.0
-ARG DECK_VERSION=1.39.1
-ARG INSO_VERSION=9.3.1
-ARG YQ_VERSION=4.44.2
-ARG HELM_VERSION=3.15.2
-ARG K6_VERSION=0.52.0
+ARG KONG_VERSION=3.8.0
+ARG KONG_FOLDER=38
+ARG KUMA_VERSION=2.9.0
+ARG KONG_MESH_VERSION=2.9.0
+ARG DECK_VERSION=1.41.1
+ARG INSO_VERSION=10.1.1
+ARG YQ_VERSION=4.44.3
+ARG HELM_VERSION=3.16.2
+ARG K6_VERSION=0.54.0
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
 LABEL org.label-schema.name="Kong CI/CD tools"
-LABEL org.label-schema.vendor = "SvenWal"
+LABEL org.label-schema.vendor="SvenWal"
 LABEL org.label-schema.url="https://github.com/svenwal/kong-cicd-tools"
 
 RUN apt-get update && apt-get install curl wget gnupg unzip python3 libcurl4-openssl-dev libssl-dev git libpcre3 zlib1g-dev libyaml-0-2 xz-utils -y
@@ -90,4 +90,5 @@ RUN mkdir /opt/work
 RUN cd /opt/work && git clone https://github.com/Kong/kong-portal-templates.git
 
 COPY entrypoint.sh /entrypoint.sh
+COPY listInstalledVersions.sh /listInstalledVersions.sh
 CMD ["/entrypoint.sh"]

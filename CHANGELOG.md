@@ -1,5 +1,24 @@
 # Changelog
 
+## 4.6.0 (2024-11-0)
+
+* Updated base nodejs image to most current version
+* Updated Kong Gateway to 3.8.0
+* Updated Kuma to 2.9.0
+* Updated Kong Mesh to 2.9.0
+* Updated deck to 1.41.1
+* Updated inso cli to 10.1.1
+* Updated yq to 4.44.3
+* Updated helm to 3.16.2
+* Updated k6 to 0.54.0
+* Updated openapi-format to 1.24.2
+* Updated AWS cli tools to 2.19.0
+* Updated GCloud cli tools to 499.0.0
+* Updated Azure cli tools to 2.65.0
+* Updated kubectl to 1.31.2
+* Updated postgresql clients to 15.8
+* Added small script to get a version overview of all tools installed at /listInstalledVersions.sh
+
 ## 4.5.0 (2024-07-03)
 
 * Updated base nodejs image to most current version
