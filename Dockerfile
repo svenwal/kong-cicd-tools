@@ -7,13 +7,14 @@ ARG INCLUDE_GATEWAY=true
 ARG TARGETPLATFORM
 ARG KONG_VERSION=3.8.0
 ARG KONG_FOLDER=38
-ARG KUMA_VERSION=2.9.0
-ARG KONG_MESH_VERSION=2.9.0
-ARG DECK_VERSION=1.41.1
-ARG INSO_VERSION=10.1.1
-ARG YQ_VERSION=4.44.3
-ARG HELM_VERSION=3.16.2
-ARG K6_VERSION=0.54.0
+ARG KUMA_VERSION=2.9.1
+ARG KONG_MESH_VERSION=2.9.1
+ARG DECK_VERSION=1.41.4
+ARG INSO_VERSION=10.2.0
+ARG YQ_VERSION=4.44.5
+ARG HELM_VERSION=3.16.3
+ARG K6_VERSION=0.55.0
+ARG SPECTRAL_VERSION=6.14.2
 
 LABEL maintainer="sven@svenwal.de"
 LABEL org.label-schema.description="When using the Kong API Gateway (or its Enterprise version including the developer portal) automation of deployment and configuration is a key feature. As this is commonly done in a runner instance using Docker I have prepared this image and made available on Docker Hub which has the typical tools preinstalled."
@@ -55,7 +56,25 @@ RUN if [ "$INCLUDE_GATEWAY" = "true" ]; \
     fi
 # Kuma / Kong Mesh
 RUN if [ "$INCLUDE_MESH" = "true" ]; then curl -L https://kuma.io/installer.sh | VERSION=${KUMA_VERSION} bash - && ln -s kuma-${KUMA_VERSION} kuma-latest && curl -L https://docs.konghq.com/mesh/installer.sh | VERSION=${KONG_MESH_VERSION} bash - && ln -s kong-mesh-${KONG_MESH_VERSION} kong-mesh-latest; fi
-
+# Spectral
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; \
+    then \
+        curl -sL https://github.com/stoplightio/spectral/releases/download/v${SPECTRAL_VERSION}/spectral-linux-x64 -o spectral; \
+    else \
+        curl -sL https://github.com/stoplightio/spectral/releases/download/v${SPECTRAL_VERSION}/spectral-linux-arm64 -o spectral; \
+    fi; \
+    mv spectral /usr/local/bin/ && chmod a+x /usr/local/bin/spectral
+# OpenTofu
+RUN install -m 0755 -d /etc/apt/keyrings && \
+curl -fsSL https://get.opentofu.org/opentofu.gpg | tee /etc/apt/keyrings/opentofu.gpg >/dev/null && \
+curl -fsSL https://packages.opentofu.org/opentofu/tofu/gpgkey | gpg --no-tty --batch --dearmor -o /etc/apt/keyrings/opentofu-repo.gpg >/dev/null && \
+chmod a+r /etc/apt/keyrings/opentofu.gpg /etc/apt/keyrings/opentofu-repo.gpg  && \
+echo \
+  "deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main && \
+deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main" | \
+tee /etc/apt/sources.list.d/opentofu.list > /dev/null && \
+chmod a+r /etc/apt/sources.list.d/opentofu.list && \
+apt-get update && apt-get install -y tofu
 # anything else
 RUN apt-get update && apt-get -y install apt-transport-https ca-certificates && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
 RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"; else curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"; fi && chmod +x kubectl && mv kubectl /usr/local/bin
@@ -85,7 +104,6 @@ rm inso.tar; fi;
 
 RUN apt-get update && apt-get -y install  jq httpie redis-tools postgresql-client dnsutils
 
-RUN npm install -g kong-portal-cli @stoplight/spectral openapi-format
 RUN mkdir /opt/work
 RUN cd /opt/work && git clone https://github.com/Kong/kong-portal-templates.git
 

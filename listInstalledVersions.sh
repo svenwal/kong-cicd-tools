@@ -47,6 +47,9 @@ k6 --version
 echo "*** spectral"
 spectral --version
 
+echo "*** OpenTofu"
+tofu --version
+
 echo "*** kubectl"
 kubectl version
 

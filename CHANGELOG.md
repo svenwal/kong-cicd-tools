@@ -1,9 +1,26 @@
 # Changelog
 
+## 4.7.0 (2024-12-03)
+
+* Updated base nodejs image to most current version
+* 🆕 OpenTofu added (1.8.6)
+* Updated Kuma to 2.9.1
+* Updated Kong Mesh to 2.9.1
+* Updated deck to 1.41.4
+* Updated inso cli to 10.2.0
+* Updated yq to 4.44.5
+* Updated helm to 3.16.3
+* Updated k6 to 0.55.0
+* Updated AWS cli tools to 2.22.2
+* Updated GCloud cli tools to 502.0.0
+* Updated Azure cli tools to 2.67.0
+* Updated spectral tools to 6.14.2
+* Updated kubectl to 1.31.3
+* Updated postgresql clients to 15.10
+
 ## 4.6.0 (2024-11-0)
 
 * Updated base nodejs image to most current version
-* Updated Kong Gateway to 3.8.0
 * Updated Kuma to 2.9.0
 * Updated Kong Mesh to 2.9.0
 * Updated deck to 1.41.1
