@@ -30,6 +30,7 @@ Starting with 2.0.0 this image is available for both AMD64 and ARM64.
 |[redis-tools](https://redis.io/topics/rediscli)|redis-cli is the Redis command line interface, a simple program that allows to send commands to Redis, and read the replies sent by the server, directly from the terminal.|7.0.15|
 |[k6](https://k6.io/open-source)|A modern load testing tool built for developer happiness|0.55.0|
 |[Spectral](https://github.com/stoplightio/spectral)|Spectral, an Open Source JSON/YAML Linter|6.14.2|
+|[OpenTofu](https://opentofu.org/)|The open source infrastructure as code tool.|1.8.6|
 |[kubectl](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)|The toolset to configure your Kubernetes|1.31.3|
 |[Helm](https://helm.sh/)|The package manager for Kubernetes|3.16.3|
 |[PostgreSQL clients](https://www.postgresql.org/docs/11/reference-client.html)|PostgreSQL client applications and utilities (including pg_dump)|15.10|
