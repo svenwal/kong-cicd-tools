@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.8.0 (2025-01-02)
+
+* Updated base nodejs image to most current version
+* Updated Kong Gateway to 3.9.0
+* Updated Kuma to 2.9.2
+* Updated Kong Mesh to 2.9.2
+* Updated deck to 1.42.1
+* Updated inso cli to 10.3.0
+* Updated yq to 4.44.6
+* Updated helm to 3.16.4
+* Updated k6 to 0.55.2
+* Updated openapi-format to 1.25.0
+* Updated AWS cli tools to 2.22.26
+* Updated GCloud cli tools to 504.0.1
+* Updated OpenTofu to 1.8.8
+* Updated kubectl to 1.32.0
+
 ## 4.7.0 (2024-12-03)
 
 * Updated base nodejs image to most current version
@@ -21,6 +38,7 @@
 ## 4.6.0 (2024-11-0)
 
 * Updated base nodejs image to most current version
+* Updated Kong Gateway to 3.8.0
 * Updated Kuma to 2.9.0
 * Updated Kong Mesh to 2.9.0
 * Updated deck to 1.41.1
