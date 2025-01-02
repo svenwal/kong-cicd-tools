@@ -35,7 +35,7 @@
 * Updated kubectl to 1.31.3
 * Updated postgresql clients to 15.10
 
-## 4.6.0 (2024-11-0)
+## 4.6.0 (2024-11-01)
 
 * Updated base nodejs image to most current version
 * Updated Kong Gateway to 3.8.0
